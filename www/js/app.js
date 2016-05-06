@@ -14,11 +14,47 @@ angular.module('starter', ['ionic'])
 
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
-      .state('page01', {
+      .state('menu', {
+        url: '/menu',
+        templateUrl: 'templates/menu.html'
+      })
+      /*.state('page02', {
+       url: '/page02',
+       templateUrl: 'templates/app.html'
+       })*/
+      .state('app', {
+        url: '/app',
+        abstract: true,
+        templateUrl: 'templates/app.html'
+      })
+
+      .state('app.page01', {
         url: '/page01',
-        templateUrl: 'templates/page01.html'
+        views: {
+          'AppContent': {
+            templateUrl: 'templates/page01.html'
+          }
+        }
+      })
+      .state('app.page02', {
+        url: '/page02',
+        views: {
+          'AppContent': {
+            templateUrl: 'templates/page02.html'
+          }
+        }
       });
 
-    $urlRouterProvider.otherwise('/page01');
 
+    $urlRouterProvider.otherwise('/app/page01');
+
+  })
+  .controller('AppCtrl', function ($scope) {
+    $scope.exit = function () {
+      ionic.Platform.exitApp()
+    };
+    $scope.bottlePosition = true;
+    $scope.bottlePutInBox = function () {
+      $scope.bottlePosition = false;
+    }
   });
