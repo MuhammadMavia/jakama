@@ -3,13 +3,10 @@
     <img class="gear" src="./img/gear.png" ui-sref="menu"/>
     <div class="no-padding" style="background: #4A301B">
       <div class="box-app" style="width: 15%">
-        <div ng-repeat="img in [10,1,2,3,4,5,6,7,8,9]">
+        <div ng-repeat="box in [1,2,3,4,5,6,7,8,9,10]">
 
           <div class="box-img" ng-class="{'box-img-last':$last}">
-            <span class="orange-border" ng-if="!bottlePosition">
-              <img class="bottle-on-box" src="./img/bottle.png"/>
-            </span>
-
+            <span id="box-{{$index}}" class="orange-border-hide" ng-click="orangeBoxActive($index)"></span>
           </div>
 
         </div>

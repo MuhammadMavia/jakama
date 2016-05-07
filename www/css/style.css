@@ -37,7 +37,7 @@ ion-content {
   bottom: 33vh;
 }
 
-.bottle-on-box {
+.item-on-box {
   height: 15vh;
   /*margin-top: 25%;*/
 }
@@ -100,15 +100,13 @@ ion-content {
   border-radius: 10px;
   margin-top: 20%;
 }
-
 .orange-border-hide {
-  /*border: 5px solid orange;*/
+  padding-top: 5px;
   display: inline-block;
-  /*box-shadow: 0 0 50px orange;*/
   height: 18vh;
   width: 60%;
-  border-radius: 20px;
-  margin-top: calc(20% + 5px);
+  border-radius: 10px;
+  margin-top: 20%;
 }
 
 .no-padding {
@@ -119,4 +117,7 @@ ion-content {
   height: 30%;
   left: 35%;
   bottom: 45vh;
+}
+.dsp-none{
+  display: none;
 }
