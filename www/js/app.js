@@ -7,14 +7,13 @@ angular.module('starter', ['ionic'])
         cordova.plugins.Keyboard.disableScroll(true);
       }
       if (window.StatusBar) {
-        StatusBar.styleDefault();
+        StatusBar.hide();
       }
       $rootScope.item = {};
-      $rootScope.$on('$stateChangeStart',
-        function () {
-          $rootScope['bottle'] = $rootScope.item.bottle;
-          $rootScope['sock'] = $rootScope.item.sock;
-        })
+      $rootScope.$on('$stateChangeStart', function () {
+        $rootScope['bottle'] = $rootScope.item.bottle;
+        $rootScope['sock'] = $rootScope.item.sock;
+      })
     });
   })
   .config(function ($stateProvider, $urlRouterProvider) {
@@ -50,7 +49,7 @@ angular.module('starter', ['ionic'])
     $urlRouterProvider.otherwise('/menu');
 
   })
-  .controller('AppCtrl', function ($scope, $rootScope) {
+  .controller('AppCtrl', function ($scope, $rootScope, $state) {
     $scope.exit = function () {
       ionic.Platform.exitApp()
     };
@@ -67,7 +66,13 @@ angular.module('starter', ['ionic'])
       var box = document.getElementById('box-' + i);
       if (box.childElementCount) {
         box.classList == 'orange-border activated' ? box.className = 'orange-border-hide' : box.className = 'orange-border';
-
       }
     };
+    document.addEventListener("backbutton", onBackKeyDown, true);
+    function onBackKeyDown(eve) {
+      $state.go('menu');
+      eve.preventefault();
+    }
+
+
   });
